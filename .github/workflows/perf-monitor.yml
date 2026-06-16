@@ -25,7 +25,14 @@ jobs:
         run: npx playwright install chromium
 
       - name: Run performance monitor
-        run: npx playwright test tests/perf-monitor.spec.ts
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files present:"
+          ls -la
+          echo "Tests folder:"
+          ls -la tests/
+          npx playwright test tests/perf-monitor.spec.ts
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
