@@ -41,9 +41,9 @@ jobs:
           ALERT_FROM: ${{ secrets.ALERT_FROM }}
           ALERT_TO: ${{ secrets.ALERT_TO }}
           SLOW_THRESHOLD_MS: 3000
-          PAGE_1_NAME: "The Slow One"
-          PAGE_1_URL: "https://httpbin.org/delay/10"
-          PAGE_2_NAME: "Google"
-          PAGE_2_URL: "https://www.google.com"
-          PAGE_3_NAME: "GitHub"
-          PAGE_3_URL: "https://github.com"
+          PAGE_4_NAME: "The Slow One"
+          PAGE_4_URL: "https://httpbin.org/delay/10"
+          PAGE_5_NAME: "Google"
+          PAGE_5_URL: "https://www.google.com"
+          PAGE_6_NAME: "GitHub"
+          PAGE_6_URL: "https://github.com"
