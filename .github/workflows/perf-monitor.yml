@@ -1,0 +1,42 @@
+name: Performance Monitor
+
+on:
+  schedule:
+    - cron: "0 */3 * * 1-5"  # every 3 hours, Mon-Fri
+  workflow_dispatch:           # also allows manual trigger from GitHub UI
+
+jobs:
+  perf-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
+
+      - name: Run performance monitor
+        run: npx playwright test
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_FROM: ${{ secrets.ALERT_FROM }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+          SLOW_THRESHOLD_MS: 3000
+          PAGE_1_NAME: "The Slow One"
+          PAGE_1_URL: "https://httpbin.org/delay/10"
+          PAGE_2_NAME: "Google"
+          PAGE_2_URL: "https://www.google.com"
+          PAGE_3_NAME: "GitHub"
+          PAGE_3_URL: "https://github.com"
