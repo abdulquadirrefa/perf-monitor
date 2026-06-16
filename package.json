@@ -1,0 +1,16 @@
+{
+  "name": "perf-monitor",
+  "version": "1.0.0",
+  "scripts": {
+    "check": "npx playwright test"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "nodemailer": "^6.9.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/nodemailer": "^6.4.0",
+    "typescript": "^5.0.0"
+  }
+}
